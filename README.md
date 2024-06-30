@@ -4,7 +4,7 @@ Tulip is a lightweight utility for making simple tooltips that respond to their 
 
 In an effort to be more [accessible](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role), the tooltips utilize `aria-describedby`, stay open when the mouse moves over them, and close when the `Escape` key is pressed.
 
-Check out the [example](#) to see how tulip works.
+Check out the example folder to see how tulip works.
 
 ## Usage
 
