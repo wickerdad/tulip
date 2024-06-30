@@ -1,0 +1,273 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/*----- REMOVE BLUE HIGHLIGHT ON TOUCH -----*/
+*:hover,
+*:focus,
+*:focus-visible,
+*:active {
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+:root {
+  --ui-000: #f9f9fa;
+  --ui-00: #f4f4f6;
+  --ui-0: #ececef;
+  --ui-1: #dedee3;
+  --ui-2: #d0d0d7;
+  --ui-3: #c2c2cb;
+  --ui-4: #b5b5c0;
+  --ui-5: #a7a7b4;
+  --ui-6: #9999a8;
+  --ui-7: #8b8b9c;
+  --ui-8: #7e7e91;
+  --ui-9: #717184;
+  --ui-10: #656576;
+  --ui-11: #595969;
+  --ui-12: #4d4d5b;
+  --ui-13: #42424d;
+  --ui-14: #36363f;
+  --ui-15: #2a2a32;
+  --ui-16: #1e1e24;
+  --ui-17: #131316;
+  --ui-18: #060607;
+  --ui-19: #070708;
+
+
+  --body-bg: var(--ui-00);
+  --header-color: var(--ui-18);
+  --font-color: var(--ui-15);
+
+  --selection-bg: var(--ui-17);
+  --selection-text: var(--ui-00);
+
+  --tulip-bg: var(--ui-000);
+  --tulip-border: var(--ui-1);
+  --tulip-text: var(--ui-15);
+
+  --button-bg: var(--ui-18);
+  --button-hov: var(--ui-14);
+  --button-text: var(--ui-0);
+}
+
+::selection {
+  color: var(--selection-text);
+  background-color: var(--selection-bg);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg: var(--ui-17);
+    --header-color: var(--ui-2);
+    --font-color: var(--ui-4);
+
+    --selection-bg: var(--ui-00);
+    --selection-text: var(--ui-17);
+  
+    --tulip-bg: var(--ui-16);
+    --tulip-border: var(--ui-14);
+    --tulip-text: var(--ui-2);
+  
+    --button-bg: var(--ui-1);
+    --button-hov: var(--ui-4);
+    --button-text: var(--ui-16);
+  }
+
+  ::selection {
+    color: var(--selection-text);
+    background-color: var(--selection-bg);
+  }
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'slnt' 0;
+  line-height: 1.5;
+  color: var(--font-color);
+  background-color: var(--body-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem;
+  color: var(--button-text);
+  border: 0px solid transparent;
+  border-radius: 0.375rem;
+  background-color: var(--button-bg);
+  transition-property: background-color;
+  transition: 150ms;
+}
+
+button:hover {
+  background-color: var(--button-hov);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5em;
+  line-height: 1.25em;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2.625rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: 1.5em;
+  color: var(--font-color);
+}
+
+/*---------- Content Styles ----------*/
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.row:nth-of-type(1) {
+  align-items: flex-start;
+}
+
+.row:nth-of-type(2) {
+  align-items: center;
+}
+
+.row:nth-of-type(3) {
+  align-items: flex-end;
+}
+
+.ph {
+  font-size: 1.75rem;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.flex-row .ph {
+  font-size: 1.25rem;
+  line-height: 1em;
+}
+
+/*---------- Tulip Setup Styles ----------*/
+
+.tulip {
+  position: relative;
+}
+
+.tulip-wrap {
+  display: block;
+  position: absolute;
+  width: 0;
+  max-width: min(90vw, 25ch);
+  /* max-width is the only value you should change */
+  height: auto;
+  transition-property: opacity visibility transform;
+  visibility: hidden;
+  opacity: 0;
+  overflow: clip;
+  z-index: 10;
+}
+
+.tulip-wrap.show {
+  visibility: visible;
+  opacity: 1;
+  overflow: visible;
+}
+
+/*---------- Tulip Text Styles ----------*/
+
+.tulip-text {
+  display: block;
+  position: relative;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  line-height: 1.3em;
+  color: var(--tulip-text);
+  border: 2px solid var(--tulip-border);
+  border-radius: 0.5rem;
+  background-color: var(--tulip-bg);
+  box-shadow: 0px 3px 9px -3px rgba(7, 7, 8, 0.1);
+}
