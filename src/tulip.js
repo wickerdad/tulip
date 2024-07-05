@@ -79,8 +79,8 @@ function tulip(element, delay = 300, transition = 150, distance = 15) {
 
 
 function position(tulip, wrap, distance) {
-  const vh = window.innerHeight;
-  const vw = window.innerWidth;
+  const vh = window.innerHeight - document.documentElement.clientHeight;
+  const vw = window.innerWidth - document.documentElement.clientWidth;
   const tipPos = tulip.getBoundingClientRect();
   const tipHalfWidth = tipPos.width / 2;
   const textPos = wrap.getBoundingClientRect();
