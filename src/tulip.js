@@ -1,6 +1,9 @@
 function tulip(element, delay = 300, transition = 150, distance = 15) {
   /* distance is in pixels to make position more accurate */
 
+  // hide tooltip when element is clicked
+  element.addEventListener('click', hideOnClick);
+
   // add keydown listener for document
   document.addEventListener('keydown', escape);
 
@@ -61,6 +64,7 @@ function tulip(element, delay = 300, transition = 150, distance = 15) {
         wrap.removeEventListener('mouseenter', mouseovertext);
         wrap.removeEventListener('mouseleave', mouseleavetext);
         document.removeEventListener('keydown', escape);
+        element.removeEventListener('click', hideOnClick);
       }, transition);
 
     }
@@ -69,6 +73,7 @@ function tulip(element, delay = 300, transition = 150, distance = 15) {
   function mouseovertext() { ontext = true; }
   function mouseleavetext() { ontext = false; }
   function escape(e) { if (e.key === 'Escape') { hide(); } }
+  function hideOnClick() { hide(); }
 
 }
 
